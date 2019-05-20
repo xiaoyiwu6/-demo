@@ -1,0 +1,2 @@
+/* pages/release/release.wxss */
+@import "../lib/weui.wxss"

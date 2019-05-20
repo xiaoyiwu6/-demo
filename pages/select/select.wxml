@@ -1,0 +1,12 @@
+<!--pages/select/select.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title" hidden="{{!isCategory}}">分类</view>
+        <view class="weui-cells weui-cells_after-title" hidden="{{!isCategory}}" wx:for="{{categories}}" wx:key="category" wx:for-item="category">
+            <view class="weui-cell" bindtap="turnBack" data-category="{{category}}">
+                <view class="weui-cell__bd">{{category}}</view>
+                <view class="weui-cell__ft">说明文字</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,72 @@
+<!--pages/release/release.wxml-->
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class="page">
+  <view class="page__bd">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="section">
+              <!-- <view class="section__title">input</view> -->
+              <input name="book_name" placeholder="书名：" auto-focus='true' />
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class='section '>
+              <textarea placeholder="描述书转手的原因、入手渠道、是否正版、内容介绍等" name="description" />
+            </view>
+            <!-- <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view> -->
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">图片上传</view>
+                <view class="weui-uploader__info">{{files.length}}/2</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files}}" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">价格</view>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="weui-cell__ft weui-cell__ft_in-access" wx:if="{{index!=-1}}">${{filters.toFix(array[index])}}</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access" wx:else></view>
+            </picker>
+          <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+        </view>   
+        <navigator url="{{select_route+'?code=category'}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">分类</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" wx:if="{{category != null}}">{{category}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" wx:else></view>
+        </navigator>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <view class="btn-area">
+              <button formType="submit" class="weui-btn" type='primary'>确认发布</button>
+              <!-- <button formType="reset">Reset</button> -->
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </form>
+  </view>
+</view>

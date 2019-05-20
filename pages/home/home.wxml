@@ -1,0 +1,56 @@
+<!-- <view class="container">
+    <view class="weui-grids">
+        <view class="weui-grid" wx:for="{{routers}}" wx:key="name">
+            <navigator url="{{item.url}}">
+                <view class='weui-grid__bg'>
+                    <view class="weui-grid__icon">
+                        <image src=" {{item.icon}}" mode="scaleToFill" />
+                    </view>
+                    <text class="weui-grid__label">{{item.name}}</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view> -->
+<view class='navbar'>
+  <navigator url="{{search_route}}?">
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </navigator>
+</view>
+<view class='container_first'>
+  <view class='item_first' wx:for="{{categories}}" wx:key="name">
+    <navigator url="{{item.url+'?name='+item.name+'&code='+item.code}}">
+      <view>
+        <view>
+          <image style="width: 50px; height: 50px;" src='{{item.icon}}'></image>
+        </view>
+        <text>{{item.name}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view class="weui-panel__ft">
+  <view class="weui-cell weui-cell_access weui-cell_link">
+    <view class="weui-cell__bd">积分优惠专区</view>
+    <navigator url='{{discount}}'>
+      <view class="weui-cell__ft weui-cell__ft_in-access">查看更多</view>
+    </navigator>
+  </view>
+</view>
+<view class='container_second'>
+  <view class='item_second' wx:for="{{books}}" wx:key="name" wx:for-item="book">
+    <navigator url="{{book.url+'?book_id='+book.id+'&name='+book.name}}">
+      <view>
+        <view>
+          <image style="width: 50px; height: 50px;" src='{{book.icon}}'></image>
+        </view>
+        <text>{{book.name}}\n</text>
+        <text wx:if="{{book.name.length <= 5}}">\n</text>
+        <text style='font-weight:bold; color:red; font-size:small'>积分：{{book.integral}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>
